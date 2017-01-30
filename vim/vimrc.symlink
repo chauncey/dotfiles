@@ -217,6 +217,8 @@ EOF
 
 " ~~~~~ GUI and OS specific stuff  ~~~~~~~~~~~~~~~~~~~~~~~~~
 let os = substitute(system('uname'), "\n", "", "")
+set guifont=Fira\ Code\ 11
+
 if os == "AIX"
     colorscheme jellycc
 	au BufRead,BufNewFile *.lst set filetype=bbx
