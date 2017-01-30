@@ -3,7 +3,7 @@
 # command line interface to it that we can use to just install everything, so
 # yeah, let's do that.
 
-if [ $OS = Darwin ]; then
+if [ "$OS" = "Darwin" ]; then
   echo "› sudo softwareupdate -i -a"
   sudo softwareupdate -i -a
 fi
