@@ -11,8 +11,6 @@
     unadd = reset HEAD
     br = branch
     ci = commit
-    fa = fetch --all
-    clean-merged = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
     promote = !$ZSH/bin/git-promote
     wtf = !$ZSH/bin/git-wtf
     rank-contributors = !$ZSH/bin/git-rank-contributors
