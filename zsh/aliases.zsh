@@ -26,3 +26,6 @@ alias 755='chmod 755'
 
 # Arch specific
 alias pacup='sudo pacman -Syu && cower -uv'
+
+alias pyl='pylint "--msg-template={line}:{msg_id} ({symbol}), {obj} {msg}"'
+alias pylf='pylint "--msg-template={path}:{line}: [{msg_id} ({symbol}), {obj}] {msg}"'
