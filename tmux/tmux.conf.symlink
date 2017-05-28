@@ -1,0 +1,97 @@
+#---  Key-Bindings ---#
+set -g prefix C-a
+unbind C-b
+set -g default-terminal "screen-256color"
+
+
+set -g status-keys vi
+setw -g mode-keys vi
+set -g base-index 1
+set -s escape-time 1
+set-option -g history-limit 100000
+
+# highlight status bar on activity
+setw -g monitor-activity on
+set -g visual-activity on
+set -g visual-bell on
+set -g display-time 1500
+setw -g monitor-activity on
+set -g visual-activity on
+
+# automatically set window title
+set -g automatic-rename
+set -g set-titles on
+set -g set-titles-string "#T"
+
+
+#--- Bindings ---#
+# force a reload of the config file
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+# split windows like vim.  - Note: vim's definition of a horizontal/vertical split is reversed from tmux's
+bind | split-window -h
+bind _ split-window -v
+# bind s split-window -v
+unbind s
+bind s send-keys " ~/bin/tmux_split_custom -v" \; send-keys "Enter"
+#  bind S split-window -v -l 20
+unbind S
+bind S send-keys " ~/bin/tmux_split_custom -v -l 20" \; send-keys "Enter"
+# bind v split-window -h
+unbind v
+bind v send-keys " ~/bin/tmux_split_custom -h" \; send-keys "Enter"
+# bind V split-window -h -l 155
+unbind V
+bind V send-keys " ~/bin/tmux_split_custom -h -l 155" \; send-keys "Enter"
+# navigate panes with hjkl
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+# resize panes like vim
+bind < resize-pane -L 10
+bind L resize-pane -L 100
+bind > resize-pane -R 10
+bind R resize-pane -R 100
+bind - resize-pane -D 5
+bind D resize-pane -D 35
+bind + resize-pane -U 5
+bind U resize-pane -U 35
+# bind : to command-prompt like vim this is the default in tmux already
+bind : command-prompt
+
+
+#---  Color ---#
+
+## BEFORE powerline
+#set -g status-fg colour247
+#set -g status-bg colour239
+#set -g status-left '[#[fg=colour82]#S#[fg=default]]'
+#set -g status-right '[#[fg=colour157]#(whoami)#[fg=default]@#[fg=colour87]#H#[fg=default]]'
+#setw -g window-status-fg colour250
+#setw -g window-status-bg colour239
+#setw -g window-status-current-fg colour147
+#setw -g window-status-current-bg colour235
+
+#set -g pane-border-fg colour239
+#set -g pane-border-bg colour233
+#set -g pane-active-border-fg colour153
+#set -g pane-active-border-bg colour233
+
+#set -g message-fg colour147
+#set -g message-bg black
+#set -g message-attr bright
+
+
+#--- Powerline ---#
+
+run-shell "powerline-daemon -q"
+source "/usr/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf"
+
+
+#--- vim-tmux-navigator ---#
+# Smart pane switching with awareness of vim splits
+bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\/)vim$' && tmux send-keys C-h) || tmux select-pane -L"
+bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\/)vim$' && tmux send-keys C-j) || tmux select-pane -D"
+bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\/)vim$' && tmux send-keys C-k) || tmux select-pane -U"
+bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\/)vim$' && tmux send-keys C-l) || tmux select-pane -R"
+bind -n C-\ run "(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\/)vim$' && tmux send-keys 'C-\\') || tmux select-pane -l"
