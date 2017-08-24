@@ -22,10 +22,10 @@
     branch = auto
     interative = auto
     ui = true
-    autocrlf = input
 [core]
     excludesfile = ~/.gitignore
     editor = vim
+    autocrlf = input
 [apply]
     whitespace = nowarn
 [mergetool]
