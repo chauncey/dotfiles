@@ -144,6 +144,9 @@ nnoremap <F9> :setl noai nocin nosi inde=<CR>
 " Android build
 nnoremap <F7> :!~/bin/andapp.sh
 
+" Change to current file's working directory
+noremap <Leader>cwd :cd %:p:h<CR>
+
 " ~~~~~ NERDTree ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 map <F8> :NERDTree<CR>
 noremap <Leader>n :NERDTreeToggle<CR>
@@ -217,7 +220,7 @@ EOF
 
 " ~~~~~ GUI and OS specific stuff  ~~~~~~~~~~~~~~~~~~~~~~~~~
 let os = substitute(system('uname'), "\n", "", "")
-set guifont=Fira\ Code\ 11
+set guifont=Fira\ Code\ 10
 
 if os == "AIX"
     colorscheme jellycc
