@@ -6,12 +6,11 @@ filetype off
 " Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " github
 Plugin 'chauncey/vim-bbxplugin'
 Plugin 'chauncey/vim-jellycc'
-Plugin 'chauncey/vim-yui'
 Plugin 'chauncey/vim-powerline'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-fugitive'
@@ -31,8 +30,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'juvenn/mustache.vim'
 Plugin 'othree/html5-syntax.vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'danilo-augusto/vim-afterglow'
 
 call vundle#end()
 
