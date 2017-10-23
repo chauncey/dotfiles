@@ -35,7 +35,12 @@
 [help]
     autocorrect = 1
 [push]
-    default = simple
+    default = current
 [user]
 	email = cchauncey@gmail.com
 	name = chauncey
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
