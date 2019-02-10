@@ -3,9 +3,12 @@ alias reload!='. ~/.zshrc'
 alias cls='clear' # Good 'ol Clear Screen command
 
 # General
-alias vi="vim"
+alias vi='vim'
 alias hist='history | grep $1' #Requires one input
 alias home='cd ~'
+alias bigs='du -ah . | sort -n -r | head -n 5'
+alias grepex='grep -R --exclude-dir={.git,node_modules,build}'
+alias wget='wget --no-hsts'
 
 # Alias to multiple ls commands
 alias ls='ls --color'
@@ -29,3 +32,6 @@ alias pacup='sudo pacman -Syu && cower -uv'
 
 alias pyl='pylint "--msg-template={line}:{msg_id} ({symbol}), {obj} {msg}"'
 alias pylf='pylint "--msg-template={path}:{line}: [{msg_id} ({symbol}), {obj}] {msg}"'
+
+alias ci='code-insiders'
+alias startx='ssh-agent startx'

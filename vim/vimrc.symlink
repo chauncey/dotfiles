@@ -3,38 +3,34 @@ syntax on
 
 filetype off
 
-" Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " github
-Plugin 'chauncey/vim-bbxplugin'
-Plugin 'chauncey/vim-jellycc'
-Plugin 'chauncey/vim-powerline'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-vividchalk'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-dispatch'
-Plugin 'mattn/emmet-vim'
-Plugin 'ervandew/snipmate.vim'
-Plugin 'ervandew/supertab'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'pangloss/vim-javascript'
-Plugin 'sjl/gundo.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'juvenn/mustache.vim'
-Plugin 'othree/html5-syntax.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'danilo-augusto/vim-afterglow'
+Plug 'chauncey/vim-bbxplugin'
+Plug 'chauncey/vim-jellycc'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vividchalk'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-dispatch'
+Plug 'posva/vim-vue'
+Plug 'mattn/emmet-vim'
+Plug 'ervandew/snipmate.vim'
+Plug 'ervandew/supertab'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'pangloss/vim-javascript'
+Plug 'sjl/gundo.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'juvenn/mustache.vim'
+Plug 'othree/html5-syntax.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'davidhalter/jedi-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'ambv/black'
 
-call vundle#end()
+call plug#end()
 
 filetype indent plugin on
 
@@ -162,6 +158,7 @@ autocmd BufWritePre *.py :%s/\s\+$//e "
 autocmd BufWritePre *.js :%s/\s\+$//e "
 autocmd BufWritePre *.pt :%s/\s\+$//e "
 autocmd BufWritePre *.xml :%s/\s\+$//e "
+autocmd BufWritePre *.vue :%s/\s\+$//e "
 
 " highligth > 80 chars line
 "au BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
@@ -189,7 +186,7 @@ let g:SuperTabDefaultCompletionType = "<C-space>" " supertab
 " ~~~~~ Filetype settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 autocmd BufRead *.py let python_highlight_builtins = 1
 autocmd BufRead *.py let python_highlight_numbers = 1
-au FileType html,xml,xhtml,pt,javascript,css,htmldjango setl shiftwidth=2 tabstop=2 softtabstop=2
+au FileType html,xml,xhtml,pt,javascript,css,htmldjango,vue setl shiftwidth=2 tabstop=2 softtabstop=2
 au FileType python,java,php setl shiftwidth=4 tabstop=4
 
 
@@ -225,11 +222,11 @@ set guifont=Fira\ Code\ 10
 
 if os == "AIX"
     colorscheme jellycc
-	au BufRead,BufNewFile *.lst set filetype=bbx
+    au BufRead,BufNewFile *.lst set filetype=bbx
     au FileType bbx setl nonumber
-	nnoremap <F4> :execute BBXListSave()<CR>
-	nnoremap bo :execute BBXLoadInput()<CR>
-	nnoremap bs :execute BBXSave()<CR>
+    nnoremap <F4> :execute BBXListSave()<CR>
+    nnoremap bo :execute BBXLoadInput()<CR>
+    nnoremap bs :execute BBXSave()<CR>
 endif
 
 if os == "Linux"
@@ -238,9 +235,11 @@ if os == "Linux"
     else
         colorscheme jellycc
     endif
-	au BufRead,BufNewFile *.lst set filetype=vb
+    au BufRead,BufNewFile *.lst set filetype=vb
     set guioptions-=m
     set guioptions-=T
+    "set guifont=Source\ Code\ Pro\ 11
+    set guifont=Fira\ Code\ 10
 endif
 
 if &t_Co >= 256 || has("gui_running")
@@ -291,15 +290,15 @@ function! <SID>SynStack()
 endfunc
 
 function! Paste(mode)
-  if a:mode == "v"
-    normal gv
-    normal "+P
-    normal l
-  elseif a:mode == "i"
-    set virtualedit=all
-    normal `^"+gP
-    let &virtualedit = ""
-  endif
+    if a:mode == "v"
+        normal gv
+        normal "+P
+        normal l
+    elseif a:mode == "i"
+        set virtualedit=all
+        normal `^"+gP
+        let &virtualedit = ""
+    endif
 endfunction
 
 vnoremap <C-X> "+d
@@ -307,3 +306,8 @@ vnoremap <C-C> "+y
 nnoremap <C-V> "+gPl
 vnoremap <C-V> :<C-U>call Paste("v")<CR>
 inoremap <C-V> <C-O>:call Paste("i")<CR>
+
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+

@@ -40,4 +40,5 @@ done
 
 unset config_files
 
+export WORKON_HOME=$HOME/VEnvs
 source /usr/local/bin/virtualenvwrapper.sh
