@@ -1,2 +1,6 @@
-alias dkr='docker $*'
-alias d-c='docker-compose $*'
+alias dco='docker-compose'
+alias dcu='docker-compose up'
+alias dcd='docker-compose down'
+alias dcb='docker-compose build'
+alias dcl='docker-compose logs --tail="all"'
+alias dcforce='docker-compose up --build --force-recreat'

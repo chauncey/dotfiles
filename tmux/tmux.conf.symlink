@@ -85,7 +85,7 @@ bind : command-prompt
 #--- Powerline ---#
 
 run-shell "powerline-daemon -q"
-source "/usr/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf"
+source "/usr/lib/python3.7/site-packages/powerline/bindings/tmux/powerline.conf"
 
 
 #--- vim-tmux-navigator ---#

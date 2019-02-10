@@ -58,6 +58,7 @@ set lsp=0 " space it out a little more (easier to read)
 set wildmenu " turn on wild menu
 set ruler " Always show current positions along the bottom
 set number " turn on line numbers
+set relativenumber " turn on relative line numbers
 set lz " do not redraw while running macros (much faster) (LazyRedraw)
 set hid " you can change buffer without saving
 set whichwrap+=<,>,h,l  " backspace and cursor keys wrap to
@@ -254,14 +255,14 @@ if &t_Co >= 256 || has("gui_running")
     " Mac specific
     if has("gui_mac") || has("gui_macvim")
         set guioptions=egmrt
-        colorscheme ir_black
+        colorscheme afterglow
         try
             set transparency=2
         catch
         endtry
     endif
 else
-    colorscheme ir_black
+    colorscheme BlackSea
 endif
 
 
