@@ -22,13 +22,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'pangloss/vim-javascript'
 Plug 'sjl/gundo.vim'
-Plug 'altercation/vim-colors-solarized'
 Plug 'juvenn/mustache.vim'
 Plug 'othree/html5-syntax.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'davidhalter/jedi-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ambv/black'
+Plug 'ajh17/Spacegray.vim'
 
 call plug#end()
 
@@ -83,6 +82,7 @@ let loaded_matchparen = 1
 " powerline - status bar twinks
 set encoding=utf-8
 let g:Powerline_symbols='fancy'
+let g:powerline_pycmd="py3"
 
 so ~/github.vim
 
@@ -303,11 +303,18 @@ endfunction
 
 vnoremap <C-X> "+d
 vnoremap <C-C> "+y
-nnoremap <C-V> "+gPl
-vnoremap <C-V> :<C-U>call Paste("v")<CR>
-inoremap <C-V> <C-O>:call Paste("i")<CR>
+"nnoremap <C-V> "+gPl
+"vnoremap <C-V> :<C-U>call Paste("v")<CR>
+"inoremap <C-V> <C-O>:call Paste("i")<CR>
 
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
+
+augroup python
+    autocmd!
+    autocmd FileType python
+                \   syn keyword pythonSelf self
+                \ | highlight def link pythonSelf Special
+augroup end
 
