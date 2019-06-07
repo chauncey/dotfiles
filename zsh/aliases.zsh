@@ -7,8 +7,9 @@ alias vi='vim'
 alias hist='history | grep $1' #Requires one input
 alias home='cd ~'
 alias bigs='du -ah . | sort -n -r | head -n 5'
-alias grepex='grep -R --exclude-dir={.git,node_modules,build}'
+alias grepex='grep -R --exclude-dir={.git,node_modules,build,bower_components,yui}'
 alias wget='wget --no-hsts'
+alias ducks='du -cks * | sort -nr | head'
 
 # Alias to multiple ls commands
 alias ls='ls --color'
@@ -35,3 +36,5 @@ alias pylf='pylint "--msg-template={path}:{line}: [{msg_id} ({symbol}), {obj}] {
 
 alias ci='code-insiders'
 alias startx='ssh-agent startx'
+alias swap='setxkbmap -option caps:swapescape'
+alias aur='auracle download'
