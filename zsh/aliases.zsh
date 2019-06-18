@@ -12,7 +12,6 @@ alias wget='wget --no-hsts'
 alias ducks='du -cks * | sort -nr | head'
 
 # Alias to multiple ls commands
-alias ls='ls --color'
 alias la='ls -Al'               # show hidden files
 alias lx='ls -lXB'              # sort by extension
 alias lk='ls -lSr'              # sort by size
