@@ -56,10 +56,6 @@ __git_files () {
 }
 
 export WORKON_HOME=$HOME/VEnvs
-source /usr/local/bin/virtualenvwrapper.sh
-
-
-source /opt/google-cloud-sdk/path.zsh.inc
+source $HOME/bin/virtualenvwrapper.sh
 
 #zprof
-
