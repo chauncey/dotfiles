@@ -46,6 +46,7 @@ setopt   autopushd pushdminus extendedglob rcquotes mailwarning
 setopt complete_aliases
 
 bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line

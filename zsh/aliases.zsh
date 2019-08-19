@@ -7,7 +7,7 @@ alias vi='vim'
 alias hist='history | grep $1' #Requires one input
 alias home='cd ~'
 alias bigs='du -ah . | sort -n -r | head -n 5'
-alias grepex='grep -R --exclude-dir={.git,node_modules,build,bower_components,yui}'
+alias grepex='grep -R --exclude-dir={.git,coverage,node_modules,build,bower_components,yui,.eslintcache}'
 alias wget='wget --no-hsts'
 alias ducks='du -cks * | sort -nr | head'
 
