@@ -26,8 +26,8 @@ Plug 'juvenn/mustache.vim'
 Plug 'othree/html5-syntax.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'airblade/vim-gitgutter'
-Plug 'ambv/black'
-Plug 'ajh17/Spacegray.vim'
+Plug 'prettier/vim-prettier'
+Plug 'dracula/vim'
 
 call plug#end()
 
@@ -231,7 +231,7 @@ endif
 
 if os == "Linux"
     if has("gui_running")
-        colorscheme jellycc "colorscheme darkbone "colorscheme solarized "colorscheme ir_black
+        colorscheme dracula "colorscheme jellycc "colorscheme darkbone "colorscheme solarized "colorscheme ir_black
     else
         colorscheme jellycc
     endif
@@ -255,7 +255,7 @@ if &t_Co >= 256 || has("gui_running")
     " Mac specific
     if has("gui_mac") || has("gui_macvim")
         set guioptions=egmrt
-        colorscheme afterglow
+        colorscheme dracula "colorscheme afterglow
         try
             set transparency=2
         catch
