@@ -27,8 +27,9 @@ Plug 'othree/html5-syntax.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'airblade/vim-gitgutter'
 Plug 'prettier/vim-prettier'
-Plug 'dracula/vim'
-Plug 'airblade/vim-gitgutter'
+Plug 'ambv/black'
+Plug 'ajh17/Spacegray.vim'
+Plug 'dracula/vim',{'as':'dracula'}
 
 call plug#end()
 
@@ -206,25 +207,24 @@ au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 
 
+
 " ~~~~~ GUI and OS specific stuff  ~~~~~~~~~~~~~~~~~~~~~~~~~
 let os = substitute(system('uname'), "\n", "", "")
 set guifont=Fira\ Code\ 10
 
-" BBx specific
-au BufRead,BufNewFile *.lst set filetype=bbx
-au FileType bbx setl nonumber
-nnoremap <F4> :execute BBXListSave()<CR>
-nnoremap bo :execute BBXLoadInput()<CR>
-nnoremap bs :execute BBXSave()<CR>
 
 if os == "Linux"
     colorscheme dracula
-    
-    au BufRead,BufNewFile *.lst set filetype=vb
     set guioptions-=m
     set guioptions-=T
-    "set guifont=Source\ Code\ Pro\ 11
-    set guifont=Fira\ Code\ 10
+    
+    " BBx related
+    au BufRead,BufNewFile *.lst set filetype=bbx
+    au FileType bbx setl nonumber
+    nnoremap <F4> :execute BBXListSave()<CR>
+    nnoremap bo :execute BBXLoadInput()<CR>
+    nnoremap bs :execute BBXSave()<CR>
+    au BufRead,BufNewFile *.lst set filetype=vb
 endif
 
 if &t_Co >= 256 || has("gui_running")
@@ -239,8 +239,9 @@ if &t_Co >= 256 || has("gui_running")
     endif
     " Mac specific
     if has("gui_mac") || has("gui_macvim")
+        set guifont=Hasklug\ Nerd\ Font\ Mono:h13
         set guioptions=egmrt
-        colorscheme dracula 
+        colorscheme dracula
         try
             set transparency=2
         catch
@@ -288,6 +289,13 @@ endfunction
 
 vnoremap <C-X> "+d
 vnoremap <C-C> "+y
+nnoremap <C-V> "+gPl
+vnoremap <C-V> :<C-U>call Paste("v")<CR>
+inoremap <C-V> <C-O>:call Paste("i")<CR>
+
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
 augroup python
     autocmd!
@@ -296,10 +304,3 @@ augroup python
                 \ | highlight def link pythonSelf Special
 augroup end
 
-nnoremap <C-V> "+gPl
-vnoremap <C-V> :<C-U>call Paste("v")<CR>
-inoremap <C-V> <C-O>:call Paste("i")<CR>
-
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup

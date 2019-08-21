@@ -51,11 +51,9 @@ done
 
 unset config_files
 
+source $HOME/bin/virtualenvwrapper.sh
+
 __git_files () { 
     _wanted files expl 'local files' _files     
 }
 
-export WORKON_HOME=$HOME/VEnvs
-source $HOME/bin/virtualenvwrapper.sh
-
-#zprof

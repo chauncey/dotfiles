@@ -4,9 +4,8 @@ export NVM_NO_USE=true
 export NVM_AUTO_USE=true
 export OS=`uname`
 export HOSTNAME="`hostname`"
-export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME=$HOME/VEnvs
 export PROJECT_HOME=$HOME/Code
-source /usr/local/bin/virtualenvwrapper.sh
 
 fpath=($ZSH/functions $fpath)
 
@@ -46,7 +45,6 @@ setopt   autopushd pushdminus extendedglob rcquotes mailwarning
 setopt complete_aliases
 
 bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
