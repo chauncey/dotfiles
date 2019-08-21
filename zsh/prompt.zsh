@@ -51,16 +51,18 @@ need_push () {
 }
 
 directory_name() {
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  echo "%{$fg_bold[cyan]%}%~/%{$reset_color%}"
 }
 
 host_name() {
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
         echo "%{$fg[blue]%}($(hostname))%{$reset_color%}"
+    else
+        echo "%{$fg[green]%}($(hostname))%{$reset_color%}"
     fi
 }
 
-export PROMPT=$'\n$(host_name) in ${PWD/#$HOME/~} $(git_dirty)$(need_push)\n› '
+export PROMPT=$'\n$(host_name) in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
