@@ -6,6 +6,7 @@ export OS=`uname`
 export HOSTNAME="`hostname`"
 export WORKON_HOME=$HOME/VEnvs
 export PROJECT_HOME=$HOME/Code
+export PYTHONDONTWRITEBYTECODE=1
 
 fpath=($ZSH/functions $fpath)
 
