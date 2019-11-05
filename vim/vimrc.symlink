@@ -14,28 +14,12 @@ call plug#begin('~/.vim/plugged')
 " github
 Plug 'chauncey/vim-bbxplugin'
 Plug 'chauncey/vim-bbx-syntax'
-Plug 'chauncey/vim-jellycc'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-dispatch'
-Plug 'posva/vim-vue'
-Plug 'mattn/emmet-vim'
-Plug 'ervandew/snipmate.vim'
-Plug 'ervandew/supertab'
-Plug 'fholgado/minibufexpl.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-Plug 'pangloss/vim-javascript'
-Plug 'sjl/gundo.vim'
-Plug 'juvenn/mustache.vim'
-Plug 'othree/html5-syntax.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'airblade/vim-gitgutter'
-Plug 'prettier/vim-prettier'
-Plug 'ambv/black'
-Plug 'ajh17/Spacegray.vim'
 Plug 'dracula/vim',{'as':'dracula'}
+Plug 'mattn/emmet-vim'
+Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-commentary'
+Plug 'ambv/black'
 
 call plug#end()
 
