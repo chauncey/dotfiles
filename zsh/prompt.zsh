@@ -51,7 +51,9 @@ need_push () {
 }
 
 directory_name() {
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  # First includes the current directory only, Second is full path
+  # echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  echo "%{$fg_bold[cyan]%}%~/%{$reset_color%}"
 }
 
 host_name() {
