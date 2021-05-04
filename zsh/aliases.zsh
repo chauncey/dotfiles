@@ -37,3 +37,4 @@ alias pylf='pylint "--msg-template={path}:{line}: [{msg_id} ({symbol}), {obj}] {
 
 alias ci='code-insiders'
 alias startx='ssh-agent startx'
+alias swap="setxkbmap -option caps:swapescape"
