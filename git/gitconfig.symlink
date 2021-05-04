@@ -2,11 +2,12 @@
 [include]
     path = ~/.gitconfig.local
 [hub]
-    protocol = https
+    protocol = ssh
 [alias]
     st = status -sb
     co = checkout
     cob = checkout -b
+    cot = checkout --track
     can = commit --amend --no-edit
     unadd = reset HEAD
     br = branch
@@ -52,3 +53,5 @@
 	required = true
 [diff]
 	tool = meld
+[credential]
+	helper = cache

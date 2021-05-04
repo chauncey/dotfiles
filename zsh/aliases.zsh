@@ -3,12 +3,8 @@ alias reload!='. ~/.zshrc'
 alias cls='clear' # Good 'ol Clear Screen command
 
 # General
-
-if [ -x  nvim ]; then
-  alias vi='nvim'
-else
-  alias vi='vim'
-fi
+alias nvi='nvim'
+alias vi='vim'
 
 alias hist='history | grep $1' #Requires one input
 alias home='cd ~'
@@ -35,6 +31,7 @@ alias 755='chmod 755'
 
 # Arch specific
 alias pacup='sudo pacman -Syu && cower -uv'
+alias aur='auracle download'
 
 alias pyl='pylint "--msg-template={line}:{msg_id} ({symbol}), {obj} {msg}"'
 alias pylf='pylint "--msg-template={path}:{line}: [{msg_id} ({symbol}), {obj}] {msg}"'
@@ -43,3 +40,4 @@ alias ci='code-insiders'
 alias startx='ssh-agent startx'
 alias swap='setxkbmap -option caps:swapescape'
 alias aur='auracle download'
+
