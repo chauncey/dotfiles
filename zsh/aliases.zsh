@@ -5,14 +5,15 @@ alias cls='clear' # Good 'ol Clear Screen command
 # General
 alias nvi='nvim'
 alias vi='vim'
+
 alias hist='history | grep $1' #Requires one input
 alias home='cd ~'
 alias bigs='du -ah . | sort -n -r | head -n 5'
-alias grepex='grep -R --exclude-dir={.git,node_modules,build}'
+alias grepex='grep -R --exclude-dir={.git,node_modules,build,bower_components,yui} --exclude=.eslintcache'
 alias wget='wget --no-hsts'
+alias ducks='du -cks * | sort -nr | head'
 
 # Alias to multiple ls commands
-alias ls='ls --color'
 alias la='ls -Al'               # show hidden files
 alias lx='ls -lXB'              # sort by extension
 alias lk='ls -lSr'              # sort by size
@@ -37,4 +38,6 @@ alias pylf='pylint "--msg-template={path}:{line}: [{msg_id} ({symbol}), {obj}] {
 
 alias ci='code-insiders'
 alias startx='ssh-agent startx'
-alias swap="setxkbmap -option caps:swapescape"
+alias swap='setxkbmap -option caps:swapescape'
+alias aur='auracle download'
+

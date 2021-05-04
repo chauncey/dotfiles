@@ -4,9 +4,9 @@ export NVM_NO_USE=true
 export NVM_AUTO_USE=true
 export OS=`uname`
 export HOSTNAME="`hostname`"
-export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME=$HOME/VEnvs
 export PROJECT_HOME=$HOME/Code
-source /usr/local/bin/virtualenvwrapper.sh
+export PYTHONDONTWRITEBYTECODE=1
 
 fpath=($ZSH/functions $fpath)
 

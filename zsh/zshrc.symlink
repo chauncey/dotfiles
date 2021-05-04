@@ -1,6 +1,8 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
+#zmodload zsh/zprof
+
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Code
 
@@ -30,7 +32,16 @@ done
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
-compinit
+
+setopt EXTENDEDGLOB
+for dump in $HOME/.zcompdump(#qN.m1); do
+  compinit
+  if [[ -s "$dump" && (! -s "$dump.zwc" || "$dump" -nt "$dump.zwc") ]]; then
+    zcompile "$dump"
+  fi
+done
+unsetopt EXTENDEDGLOB
+compinit -C
 
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
@@ -40,5 +51,9 @@ done
 
 unset config_files
 
-export WORKON_HOME=$HOME/VEnvs
-source /usr/local/bin/virtualenvwrapper.sh
+source $HOME/bin/virtualenvwrapper.sh
+
+__git_files () { 
+    _wanted files expl 'local files' _files     
+}
+

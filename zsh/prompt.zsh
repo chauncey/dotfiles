@@ -51,12 +51,14 @@ need_push () {
 }
 
 directory_name() {
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  echo "%{$fg_bold[cyan]%}%~/%{$reset_color%}"
 }
 
 host_name() {
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
         echo "%{$fg[blue]%}($(hostname))%{$reset_color%}"
+    else
+        echo "%{$fg[green]%}($(hostname))%{$reset_color%}"
     fi
 }
 

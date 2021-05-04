@@ -13,10 +13,10 @@ call plug#begin('~/.vim/plugged')
 
 " github
 Plug 'chauncey/vim-bbxplugin'
+Plug 'chauncey/vim-bbx-syntax'
 Plug 'chauncey/vim-jellycc'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vividchalk'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
 Plug 'posva/vim-vue'
@@ -27,13 +27,14 @@ Plug 'fholgado/minibufexpl.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 Plug 'sjl/gundo.vim'
-Plug 'altercation/vim-colors-solarized'
 Plug 'juvenn/mustache.vim'
 Plug 'othree/html5-syntax.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'davidhalter/jedi-vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'prettier/vim-prettier'
 Plug 'ambv/black'
+Plug 'ajh17/Spacegray.vim'
+Plug 'dracula/vim',{'as':'dracula'}
 
 call plug#end()
 
@@ -88,6 +89,7 @@ let loaded_matchparen = 1
 " powerline - status bar twinks
 set encoding=utf-8
 let g:Powerline_symbols='fancy'
+let g:powerline_pycmd="py3"
 
 so ~/github.vim
 
@@ -210,41 +212,24 @@ au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 
 
-" ~~~~~ Python  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-python << EOF
-import os
-import sys
-import vim
-for p in sys.path:
-    if os.path.isdir(p):
-        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-EOF
-
 
 " ~~~~~ GUI and OS specific stuff  ~~~~~~~~~~~~~~~~~~~~~~~~~
 let os = substitute(system('uname'), "\n", "", "")
 set guifont=Fira\ Code\ 10
 
-if os == "AIX"
-    colorscheme jellycc
+
+if os == "Linux"
+    colorscheme dracula
+    set guioptions-=m
+    set guioptions-=T
+    
+    " BBx related
     au BufRead,BufNewFile *.lst set filetype=bbx
     au FileType bbx setl nonumber
     nnoremap <F4> :execute BBXListSave()<CR>
     nnoremap bo :execute BBXLoadInput()<CR>
     nnoremap bs :execute BBXSave()<CR>
-endif
-
-if os == "Linux"
-    if has("gui_running")
-        colorscheme jellycc "colorscheme darkbone "colorscheme solarized "colorscheme ir_black
-    else
-        colorscheme jellycc
-    endif
     au BufRead,BufNewFile *.lst set filetype=vb
-    set guioptions-=m
-    set guioptions-=T
-    "set guifont=Source\ Code\ Pro\ 11
-    set guifont=Fira\ Code\ 10
 endif
 
 if &t_Co >= 256 || has("gui_running")
@@ -259,15 +244,16 @@ if &t_Co >= 256 || has("gui_running")
     endif
     " Mac specific
     if has("gui_mac") || has("gui_macvim")
+        set guifont=Hasklug\ Nerd\ Font\ Mono:h13
         set guioptions=egmrt
-        colorscheme afterglow
+        colorscheme dracula
         try
             set transparency=2
         catch
         endtry
     endif
 else
-    colorscheme BlackSea
+    colorscheme jellycc
 endif
 
 
@@ -315,4 +301,11 @@ inoremap <C-V> <C-O>:call Paste("i")<CR>
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
+
+augroup python
+    autocmd!
+    autocmd FileType python
+                \   syn keyword pythonSelf self
+                \ | highlight def link pythonSelf Special
+augroup end
 
