@@ -3,9 +3,7 @@ alias reload!='. ~/.zshrc'
 alias cls='clear' # Good 'ol Clear Screen command
 
 # General
-alias nvi='nvim'
-alias vi='vim'
-
+alias vi='nvim'
 alias hist='history | grep $1' #Requires one input
 alias home='cd ~'
 alias bigs='du -ah . | sort -n -r | head -n 5'
